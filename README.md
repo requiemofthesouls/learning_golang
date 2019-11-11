@@ -1,2 +1,0 @@
-# How I learned GoLang
-
