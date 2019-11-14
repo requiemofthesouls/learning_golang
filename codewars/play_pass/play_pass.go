@@ -66,6 +66,7 @@ func PlayPass(phrase string, n int) (passphrase string) {
 
 	reversedPassphraseArray := passphraseArray
 	fmt.Println(strings.Join(passphraseArray, ""))
+	fmt.Println(strings.Join(passphraseArray, ""))
 	// TODO: Почему затирает пробелы при reverse
 	sort.Sort(sort.Reverse(sort.StringSlice(reversedPassphraseArray)))
 	passphrase = strings.Join(passphraseArray, "")
