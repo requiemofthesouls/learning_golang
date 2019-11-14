@@ -11,12 +11,6 @@ import (
 var lowercaseAlphabet = "abcdefghijklmnopqrstuvwxyz"
 var uppercaseAlphabet = strings.ToUpper(lowercaseAlphabet)
 
-func loopCharShifter(char rune, plan string, n int) (shiftedChar rune) {
-	fmt.Printf("SHIFTING {%c}\n", char)
-	shiftedChar = char
-	return
-}
-
 // Takes care of symbol shifting on giving n steps
 func shiftChar(char rune, n int) string {
 	if unicode.IsLetter(char) {
