@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 	"strconv"
 	"strings"
 	"unicode"
@@ -39,16 +38,19 @@ func shiftChar(char rune, n int) string {
 
 }
 
+func reverseSlice(slice []string) []string {
+	for left, right := 0, len(slice)-1; left < right; left, right = left+1, right-1 {
+		slice[left], slice[right] = slice[right], slice[left]
+	}
+	return slice
+}
+
 //1. shift each letter by a given number but the transformed letter must be a letter (circular shift),
 //2. replace each digit by its complement to 9,
 //3. keep such as non alphabetic and non digit characters,
 //4. downcase each letter in odd position, upcase each letter in even position (the first character is in position 0),
 //5. reverse the whole result.
 func PlayPass(phrase string, n int) (passphrase string) {
-	if n == 0 {
-		return passphrase
-	}
-
 	var passphraseArray []string
 
 	for _, char := range phrase {
@@ -64,14 +66,10 @@ func PlayPass(phrase string, n int) (passphrase string) {
 		}
 	}
 
-	reversedPassphraseArray := passphraseArray
-	fmt.Println(strings.Join(passphraseArray, ""))
-	// TODO: Почему затирает пробелы при reverse
-	sort.Sort(sort.Reverse(sort.StringSlice(reversedPassphraseArray)))
-	passphrase = strings.Join(passphraseArray, "")
+	passphrase = strings.Join(reverseSlice(passphraseArray), "")
 	return
 }
 
 func main() {
-	fmt.Println(PlayPass("I LOVE YOU!!!", 1))
+	fmt.Println(PlayPass("Test [[[[[[s]]]]]]a214`~given strING!!!//`12341//", 4))
 }
